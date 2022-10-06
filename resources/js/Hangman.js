@@ -36,7 +36,7 @@ class Hangman {
    */
   start(difficulty, next) {
     // get word and set it to the class's this.word
-    this.getRandomWord(difficulty) = this.word 
+    this.word  = this.getRandomWord(difficulty)
     // clear canvas
     this.clearCanvas();
     // draw base
@@ -137,15 +137,39 @@ class Hangman {
     this.ctx.fillRect(10, 410, 175, 10); // Base
   }
 
-  drawHead() {}
+  drawHead() {
+    this.ctx.beginPath();
+    this.ctx.arc(250, 85, 25, 0, 2 * Math.PI, true);
+    this.ctx.stroke();
+  }
 
-  drawBody() {}
+  drawBody() {
+    this.ctx.beginPath();
+    this.ctx.fillRect(245, 110, 10, 150);
+    this.ctx.stroke();
+  }
 
-  drawLeftArm() {}
+  drawLeftArm() {
+    this.ctx.beginPath();
+    this.ctx.fillRect(175, 110, 80, 10);
+    this.ctx.stroke();
+  }
 
-  drawRightArm() {}
+  drawRightArm() {
+    this.ctx.beginPath();
+    this.ctx.fillRect(245, 110, 80, 10);
+    this.ctx.stroke();
+  }
 
-  drawLeftLeg() {}
+  drawLeftLeg() {
+    this.ctx.beginPath();
+    this.ctx.fillRect(175, 260, 80, 10);
+    this.ctx.stroke();
+  }
 
-  drawRightLeg() {}
+  drawRightLeg() {
+    this.ctx.beginPath();
+    this.ctx.fillRect(245, 260, 80, 10);
+    this.ctx.stroke();
+  }
 }
