@@ -33,13 +33,13 @@ const hangman = new Hangman (canvas);
       //       2. show the gameWrapper
       gameWrapper.classList.remove('hidden');
       //       3. call the game getWordHolderText and set it to the wordHolderText
-      getWordHolderText.innerHTMl = hangman.wordHolderText();
+      wordHolderText.innerHTMl = hangman.getWordHolderText();
       //       4. call the game getGuessessText and set it to the guessesText
-      getGuessesText.innerHTMl = hangman.getGuessesText();
+      guessesText.innerHTMl = hangman.getGuessesText();
   });
   });
   // add a submit Event Listener to the guessForm
-  guessForm.addEventListener(`submit`, function(e) {
+  guessForm.addEventListener(`submit`, function (e) {
     e.preventDefault();
       //    get the guess input
       //    call the game guess() method
@@ -50,25 +50,25 @@ const hangman = new Hangman (canvas);
       guessesText.innerHTML = hangman.getGuessesText();
       //    clear the guess input field
       guessInput.value = "";
-  });
+
   // Given the Guess Function calls either the checkWin or the onWrongGuess methods
   // the value of the isOver and didWin would change after calling the guess() function.
   // Check if the game isOver:
-if (hangman.isOver == true){
+if (hangman.isOver === true){
   //      1. disable the guessInput
-  guessInput.classList.add(`hidden`);
   //      2. disable the guessButton
-  guessForm.classList.add(`hidden`);
+  guessForm.classList.add('hidden');
   //      3. show the resetGame button
-  resetGame.classList.remove("hidden");
+  resetGame.classList.remove('hidden');
   // if the game is won or lost, show an alert.
 
-if(hangman.didWin == true){
+if(hangman.didWin === true){
   alert("You guessed the word!")
 }else{
   alert("You lost the game!")
 }
 }
+  });
   // add a click Event Listener to the resetGame button
 
   resetGame.addEventListener(`click`, function (e) {
