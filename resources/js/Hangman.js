@@ -6,6 +6,10 @@ class Hangman {
 
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext(`2d`);
+    this.guesses = [];
+    this.word = "";
+    this.isOver = false;
+    this.didWin = false;
   }
 
   /**
@@ -32,11 +36,17 @@ class Hangman {
    */
   start(difficulty, next) {
     // get word and set it to the class's this.word
+    this.getRandomWord(difficulty) = this.word 
     // clear canvas
+    this.clearCanvas();
     // draw base
+    this.drawBase();
     // reset this.guesses to empty array
+    this.guesses = [];
     // reset this.isOver to false
+    this.isOver = false;
     // reset this.didWin to false
+    this.didWin = false;
   }
 
   /**
@@ -45,14 +55,38 @@ class Hangman {
    */
   guess(letter) {
     // Check if nothing was provided and throw an error if so
-    // Check for invalid cases (numbers, symbols, ...) throw an error if it is
-    // Check if more than one letter was provided. throw an error if it is.
-    // if it's a letter, convert it to lower case for consistency.
+    if (letter == ""){
+      throw new Error ("Please guess a letter.");
+    }// Check for invalid cases (numbers, symbols, ...) throw an error if it is
+    else if (!letter.valueOf.match(/^[a-zA-Z]+$/)){
+      throw new Error("Please guess only a letter.");
+    }// Check if more than one letter was provided. throw an error if it is.
+    else if (letter.length > 1){
+      throw new Erorr("Please guess 1 letter at a time.");
+    }// if it's a letter, convert it to lower case for consistency.
+    else{
+      letter.toLowerCase()
+    }
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
+    let hasletter = false;
+    for (let i = 0; i < this.guesses.length; i++){
+      if (this.guesses[i] = this.letter){
+        hasletter = true;
+        throw new Erorr ("That letter has already been guessed. Try Again.")
+      }
+    }
     // add the new letter to the guesses array.
     // check if the word includes the guessed letter:
+    if(hasLetter == false){
+      this.guesses.push(this.letter)
+    }
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
+    if(this.word.indexOf(letter) > -1){
+      this.checkWin();
+    }else{
+      this.onWrongGuess();
+    }
   }
 
   checkWin() {
