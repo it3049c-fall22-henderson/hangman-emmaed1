@@ -10,6 +10,7 @@ class Hangman {
     this.word = "";
     this.isOver = false;
     this.didWin = false;
+    this.wrongGuesses = 0;
   }
 
   /**
@@ -23,7 +24,7 @@ class Hangman {
    * */
   getRandomWord(difficulty) {
     return fetch(
-      `https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=${difficulty}`
+      `https://hangman-micro-service.herokuapp.com/?difficulty=${difficulty}`
     )
       .then((r) => r.json())
       .then((r) => r.word);
@@ -47,6 +48,7 @@ class Hangman {
     this.isOver = false;
     // reset this.didWin to false
     this.didWin = false;
+    next();
   }
 
   /**

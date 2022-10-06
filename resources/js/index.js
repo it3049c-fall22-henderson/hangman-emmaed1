@@ -27,11 +27,11 @@ const hangman = new Hangman (canvas);
   //    call the game start() method, the callback function should do the following
   difficultySelectForm.addEventListener(`submit`, function (event){
     event.preventDefault();
-    hangman.start(difficultySelect.value, function(){
+    hangman.start(difficulty.value, function(){
       //       1. hide the startWrapper
       startWrapper.classList.add('hidden');
       //       2. show the gameWrapper
-      startWrapper.classList.remove('hidden');
+      gameWrapper.classList.remove('hidden');
       //       3. call the game getWordHolderText and set it to the wordHolderText
       getWordHolderText.innerHTMl = hangman.wordHolderText();
       //       4. call the game getGuessessText and set it to the guessesText
@@ -54,11 +54,21 @@ const hangman = new Hangman (canvas);
   // Given the Guess Function calls either the checkWin or the onWrongGuess methods
   // the value of the isOver and didWin would change after calling the guess() function.
   // Check if the game isOver:
+if (hangman.isOver == true){
   //      1. disable the guessInput
+  guessInput.classList.add(`hidden`);
   //      2. disable the guessButton
+  guessForm.classList.add(`hidden`);
   //      3. show the resetGame button
+  resetGame.classList.remove("hidden");
   // if the game is won or lost, show an alert.
 
+if(hangman.didWin == true){
+  alert("You guessed the word!")
+}else{
+  alert("You lost the game!")
+}
+}
   // add a click Event Listener to the resetGame button
 
   resetGame.addEventListener(`click`, function (e) {
