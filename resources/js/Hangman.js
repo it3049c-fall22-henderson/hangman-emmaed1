@@ -61,7 +61,7 @@ class Hangman {
       alert("Please guess a letter.");
       throw new Error ("Please guess a letter.");
     }// Check for invalid cases (numbers, symbols, ...) throw an error if it is
-    if (!letter.value.match(/^[a-zA-Z]+$/)){
+    if (/^[a-zA-Z]+$/.test(letter) === false){
       alert("Please guess only a letter.");
       throw new Error("Please guess only a letter.");
     }// Check if more than one letter was provided. throw an error if it is.
@@ -72,10 +72,10 @@ class Hangman {
     letter = letter.toLowerCase();
 
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
-    let hasletter = false;
+    let hasLetter = false;
     for (let i = 0; i < this.guesses.length; i++){
       if (this.guesses[i] === letter){
-        hasletter = true;
+        hasLetter = true;
         alert("That letter has already been guessed. Try Again.");
         throw new Erorr ("That letter has already been guessed. Try Again.");
       }
@@ -87,7 +87,7 @@ class Hangman {
     }
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
-    if(this.word.indexOf(letter) > -1){
+    if(this.word.indexOf(letter) > 1){
       this.checkWin();
     }else{
       this.onWrongGuess();
