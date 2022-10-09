@@ -71,7 +71,8 @@ if(hangman.didWin === true){
   });
   // add a click Event Listener to the resetGame button
 
-  resetGame.addEventListener(`click`, function (eb) {
+  resetGame.addEventListener(`click`, function (e) {
+    location.reload();
     //    show the startWrapper
     startWrapper.classList.remove('hidden');
     //    hide the gameWrapper

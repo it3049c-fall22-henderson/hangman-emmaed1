@@ -87,7 +87,7 @@ class Hangman {
     }
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
-    if(this.word.indexOf(letter) > 1){
+    if(this.word.indexOf(letter) > -1){
       this.checkWin();
     }else{
       this.onWrongGuess();
